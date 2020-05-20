@@ -6,8 +6,6 @@ const router = new express.Router()
 //creating a new task
 router.post('/tasks', async (req, res) => {
 
-    // const task = new Task(req.body)
-    console.log(req.body)
     const task= new Task({
         ...req.body
     })
@@ -24,10 +22,7 @@ router.post('/tasks', async (req, res) => {
 // getting all tasks
 router.get('/tasks', async (req, res) => {
     try {
-        // const tasks = await Task.find({})
-      
         const tasks=await Task.find({})
-        // console.log(req.user.tasks)
         res.send(tasks)
     } catch (e) {
         res.status(500).send()
@@ -40,7 +35,6 @@ router.get('/tasks/:id', async (req, res) => {
     const _id = req.params.id
 
     try {
-//        const task = await Task.findById(_id)
         const task= await Task.findOne({_id})
 
         if (!task) {
@@ -65,10 +59,8 @@ router.patch('/tasks/:id', async (req, res) => {
     }
 
     try {
-        // const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
         const _id = req.params.id
         const task= await Task.findOne({_id},req.body,{new:true,runValidators:true})
-        console.log(task);
         if (!task) {
             return res.status(404).send()
         }
@@ -84,7 +76,6 @@ router.patch('/tasks/:id', async (req, res) => {
 //deleting the task by id
 router.delete('/tasks/:id', async (req, res) => {
     try {
-        // const task = await Task.findByIdAndDelete(req.params.id)
         const _id = req.params.id
         const task= await Task.findOneAndDelete({_id},req.body)
         if (!task) {
