@@ -17,6 +17,7 @@ export const fetchTasks=()=> async(dispatch)=>{
 
  export const fetchsingletask =(id)=> async (dispatch)=>{
      const response=await base.get('/tasks/'+id);
+    //  console.log(response.data)
      dispatch({type:"FETCH_SINGLE_TASK",payload:response.data})
    history.push('/task')
  }

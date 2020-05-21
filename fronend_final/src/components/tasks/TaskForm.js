@@ -22,6 +22,15 @@ class  TaskForm extends React.Component{
         </div>
         );
     }
+    rendertextarea=({input,label,meta})=>{
+        return (
+        <div className="field ">
+            <label>{label}</label>
+            <textarea {...input} autoComplete="off"  />
+            {this.renderError(meta)}
+        </div>
+        );
+    }
     formSubmit =(formValues) =>{
         this.props.onSubmit(formValues);
     }
@@ -32,7 +41,7 @@ class  TaskForm extends React.Component{
             
         <form onSubmit={this.props.handleSubmit(this.formSubmit)}>
             <Field name="title" component={this.renderInput} label="enter title" />
-            <Field name="description" component={this.renderInput} label="enter description"/>
+            <Field name="description" component={this.rendertextarea} label="enter description"/>
             <Field name="status" component={this.renderInput} label="enter status"/>
             <button className="ui button primary">submit</button>
         </form>
@@ -52,9 +61,9 @@ const validate=(formValues)=>{
     {
         errors.description='you must enter a description';
     }
-    if(!(formValues.status=="to do"||formValues.status=="doing"||formValues.status=="doing"))
+    if(!(formValues.status==="to do"||formValues.status==="doing"||formValues.status==="doing"))
     {
-        errors.description='enter description as to do,doing  or done';
+        errors.description='enter status as to do,doing  or done';
     }
     return errors;
 }

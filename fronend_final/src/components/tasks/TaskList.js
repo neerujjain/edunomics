@@ -36,12 +36,12 @@ class TaskList extends React.Component{
         this.props.fetchsingletask(id);
     }
     render(){
-        let to_do=this.props.tasks.map((task)=>{
+        let to_do=this.props.tasks.map((task,index)=>{
         
             if(task.status==="to do")
             {
                 
-                return (<div><button className="ui red button mini"  key={task._id} onClick={() => this.clickTask(task._id)}>{task.title}</button> <hr /></div>)
+                return (<div><button className="ui red button mini"  key={index} onClick={() => this.clickTask(task._id)}>{task.title}</button> <hr /></div>)
             }
             else 
             {

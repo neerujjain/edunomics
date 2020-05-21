@@ -9,7 +9,7 @@ class TaskEdit extends React.Component {
         this.props.edittask(this.props.task._id,formValues)
     };
     render(){
-        console.log(this.props.task);
+        // console.log(this.props.task);
         if(!this.props.task){
             return <div>loading...</div>
         }

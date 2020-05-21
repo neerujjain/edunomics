@@ -20,14 +20,22 @@ class TaskShow extends React.Component
 
         return (
         <div>
-        <h1 style={{textAlign: "center"}}>{title}</h1>
-        <p>{description}</p>
-        <h5 style={{color: "red"}}>{status}</h5>
+        <div className="ui card ">
+  <div className="content">
+    <div className="header">{title}</div>
+  </div>
+  <div className="content">
+    <h4 className="ui sub header">{status}</h4>
+    <div className="ui small feed event content summary">
+          <p>{description}</p>
+    </div>
+  </div>
+  <div className="extra content">
         <button className="ui button blue mini" onClick={() => this.edittask()}>edit</button>
         <button className="ui button red mini" onClick={() => this.deletetask()}>delete</button>
-            
+  </div>
+</div></div>
 
-        </div>
         )
     }
 }
